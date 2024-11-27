@@ -15,3 +15,5 @@ nf_macos_fonts_dir: "/Users/{{ nf_user }}/Library/Fonts"
 nf_github_raw_patched_fonts: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts"
 # A list of paths relative to nf_github_raw_patched_fonts.
 nf_single_fonts: []
+# Flag whether font sould be downloaded even over existing one
+nf_overwrite: true # default behavour
