@@ -12,7 +12,14 @@
     path: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}"
     state: directory
 
+- name: Check destinafion file {{ font|basename }} existence.
+  when: "not nf_overwrite"
+  stat:
+    path: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}/{{ font|basename }}"
+  register: "nf_path"
+
 - name: Download {{ font|basename }}.
+  when: "nf_overwrite or not nf_path.stat.exists"
   get_url:
     dest: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}/{{ font|basename }}"
     group: "{{ nf_group|default(omit) }}"
